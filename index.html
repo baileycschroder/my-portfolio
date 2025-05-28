@@ -1,10 +1,543 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>First Web Page</title>
+  <meta charset="UTF-8">
+  <title>Bailey Schroder | Data Analyst & Aspiring Data Scientist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Bailey Schroder, Data Analyst, Mathematician, and Aspiring Data Scientist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    :root {
+      --primary: #143059;
+      --accent: #23c2ff;
+      --background: #f7fafd;
+      --section-bg: #ffffff;
+      --outline: #e1eaf2;
+      --hover-bg: #e9f6fc;
+      --tab-active: #f0f7ff;
+      --shadow: 0 4px 24px rgba(20,48,89,0.09);
+      --code-bg: #f6f8fa;
+      --mono: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      --highlight: #ffba34;
+      --finalline: #23c2ff;
+      --finalbg: #f4fbff;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: var(--background);
+      color: var(--primary);
+      font-size: 17px;
+      letter-spacing: 0.01em;
+      line-height: 1.65;
+    }
+    header {
+      background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+      padding: 2em 0 1em 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0; z-index: 100;
+    }
+    header h1 {
+      color: #fff;
+      text-align: center;
+      margin: 0 0 0.3em 0;
+      font-size: 2.4em;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #183c57c7;
+    }
+    header p {
+      color: #eaf2fa;
+      text-align: center;
+      font-size: 1.15em;
+      margin: 0 0 1.1em 0;
+      font-weight: 400;
+    }
+    nav {
+      text-align: center;
+      margin-top: 0.5em;
+      margin-bottom: 0.2em;
+    }
+    nav a {
+      display: inline-block;
+      color: var(--primary);
+      background: #e6f4ff;
+      padding: 0.65em 1.5em;
+      margin: 0 0.02em;
+      text-decoration: none;
+      border-radius: 12px 12px 0 0;
+      font-weight: 500;
+      border: 2px solid var(--outline);
+      border-bottom: none;
+      font-size: 1.07em;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, color 0.13s, border 0.15s;
+      position: relative;
+      top: 4px;
+      min-width: 110px;
+      box-shadow: 0 1px 2px #fff8;
+    }
+    nav a.active, nav a:hover {
+      background: var(--tab-active);
+      color: var(--primary);
+      border-color: var(--accent) var(--accent) var(--tab-active) var(--accent);
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: 0 2px 8px #d5edfa;
+    }
+    main {
+      max-width: 1000px;
+      margin: 2.6em auto 0 auto;
+      padding: 0 1.5em 2em 1.5em;
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px);}
+      to { opacity: 1; transform: none;}
+    }
+    .section {
+      background: var(--section-bg);
+      padding: 2.1em 2em 2em 2em;
+      border-radius: 16px;
+      margin-bottom: 2.9em;
+      box-shadow: var(--shadow);
+      border: 2.3px solid var(--outline);
+    }
+    .about { border: 2.3px solid var(--accent); background: #f8fcfe; }
+    .about h2 { margin-top: 0; }
+    .profile-image,
+    .skills-image,
+    .resume-image,
+    .experience-image,
+    .projects-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 3px solid var(--accent);
+      box-shadow: 0 2px 18px #23c2ff22;
+      display: block;
+      margin: 0 auto 1.5em auto;
+      background: #f0f8fa;
+    }
+    .final-details-box {
+      background: var(--finalbg);
+      border: 3px solid var(--finalline);
+      border-radius: 18px;
+      padding: 1.1em 1.7em 1.1em 1.7em;
+      margin: 2.3em auto 1.7em auto;
+      max-width: 440px;
+      box-shadow: 0 2px 30px #23c2ff29;
+      text-align: center;
+      position: relative;
+    }
+    .final-details-box:before, .final-details-box:after {
+      content: "";
+      display: block;
+      width: 70%;
+      height: 4px;
+      margin: 0 auto 18px auto;
+      background: linear-gradient(90deg, var(--accent), var(--highlight), var(--accent));
+      border-radius: 7px;
+      opacity: 0.85;
+    }
+    .final-details-box:before { margin-bottom: 24px; margin-top: -18px;}
+    .final-details-box:after { margin-top: 24px; margin-bottom: -18px;}
+    .final-label {
+      display: inline-block;
+      background: var(--highlight);
+      color: #143059;
+      padding: 0.21em 1.2em;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.13em;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.02em;
+      box-shadow: 0 1px 6px #ffba3433;
+    }
+    .final-detail-link {
+      display: block;
+      font-size: 1.08em;
+      margin: 0.46em auto 0.46em auto;
+      color: var(--primary);
+      background: linear-gradient(90deg, #eafdff 60%, #e8f6fc 100%);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.5em 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.18s, color 0.15s, border 0.14s;
+      box-shadow: 0 1px 7px #1cb1e620;
+      word-break: break-all;
+    }
+    .final-detail-link:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 16px #23c2ff44;
+    }
+    .final-details-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.7em 0 0 0;
+      text-align: left;
+    }
+    .final-details-box li {
+      margin: 0.55em 0;
+      font-size: 1.09em;
+      padding-left: 0.3em;
+    }
+    .final-details-box li b {
+      color: var(--primary);
+      font-weight: 600;
+      margin-right: 0.4em;
+    }
+    .final-details-box .fa {
+      margin-right: 0.5em;
+      color: var(--accent);
+    }
+    /* Responsive styling */
+    @media (max-width: 550px) {
+      .final-details-box { padding: 1em 0.4em; }
+      .final-details-box:before, .final-details-box:after { width: 93%; }
+    }
+    .skills-visuals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      align-items: flex-start;
+    }
+    .skills-list { flex: 2; min-width: 260px; }
+    .skills-visual { flex: 1; min-width: 250px; max-width: 330px; }
+    .skills-visual-bar {
+      background: #f6fbff;
+      border-radius: 13px;
+      padding: 1.2em 1em 1em 1em;
+      margin-top: 1.1em;
+      margin-bottom: 1em;
+      border: 1.4px solid var(--outline);
+    }
+    .skill-label {
+      margin-bottom: 0.3em;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.07em;
+    }
+    .bar {
+      height: 17px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--accent) 80%, #e1ecf7 80%);
+      margin-bottom: 0.7em;
+      position: relative;
+      overflow: hidden;
+      border: 1.2px solid var(--outline);
+    }
+    .bar span {
+      position: absolute;
+      left: 12px;
+      color: #174464;
+      font-size: 0.95em;
+      top: 0;
+      line-height: 17px;
+      z-index: 2;
+      text-shadow: 0 1px 2px #fff8;
+      font-weight: 500;
+      font-family: var(--mono);
+    }
+    .resume-link {
+      font-size: 1.14em;
+      font-weight: 600;
+      color: var(--primary);
+      display: inline-block;
+      margin: 1.2em 0;
+      border: 2px solid var(--accent);
+      border-radius: 9px;
+      padding: 0.48em 1.17em;
+      background: linear-gradient(90deg,#eafdff 60%,#e8f6fc 100%);
+      text-decoration: none;
+      box-shadow: 0 1px 7px #1cb1e620;
+      transition: background 0.17s, color 0.13s, border 0.13s, box-shadow 0.2s;
+    }
+    .resume-link:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 16px #23c2ff44;
+    }
+    .experience-role {
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 1.08em;
+    }
+    .experience-company {
+      font-style: italic;
+      color: #197993;
+    }
+    .experience-dates {
+      color: #556;
+      font-size: 0.99em;
+      margin-left: 1em;
+      font-family: var(--mono);
+    }
+    .experience-list ul {
+      padding-left: 1.2em;
+      margin-top: 0.2em;
+      margin-bottom: 1.2em;
+    }
+    .project-card {
+      background: #f6fbff;
+      border: 1.5px solid var(--outline);
+      border-radius: 9px;
+      box-shadow: 0 1px 4px #23c2ff14;
+      padding: 1em 1.2em 0.9em 1.2em;
+      margin-bottom: 1.1em;
+      transition: box-shadow 0.18s;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 18px #23c2ff36;
+      border-color: var(--accent);
+    }
+    .project-card strong { color: var(--primary); }
+    .project-card em { color: #377578; font-size: 0.97em; }
+    pre, code {
+      background: var(--code-bg);
+      font-family: var(--mono);
+      font-size: 0.97em;
+      border-radius: 6px;
+      padding: 0.18em 0.4em;
+    }
+    .timeline {
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5em;
+      margin-left: 0.3em;
+    }
+    .timeline-entry {
+      margin-bottom: 2.1em;
+      position: relative;
+    }
+    .timeline-entry:before {
+      content: "";
+      width: 16px; height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      position: absolute;
+      left: -2.1em;
+      top: 0.35em;
+      box-shadow: 0 1px 8px #23c2ff33;
+    }
+    @media (max-width: 850px) {
+      main { padding: 0 0.4em 2em 0.4em; }
+      .section { padding: 1.15em 0.4em 1.1em 0.7em;}
+      .skills-visuals { flex-direction: column; gap: 1.2em;}
+      .skills-visual { max-width: none; }
+    }
+    @media (max-width: 500px) {
+      nav a { font-size: 0.93em; padding: 0.55em 0.7em;}
+      .section { padding: 0.9em 0.2em 0.6em 0.4em;}
+      .profile-image, .skills-image, .resume-image, .projects-image, .experience-image { width: 82px; height: 82px;}
+    }
+  </style>
+  <script>
+    function showTab(tabId) {
+      var tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      var links = document.querySelectorAll('nav a');
+      links.forEach(link => link.classList.remove('active'));
+      document.querySelector('nav a[data-tab="'+tabId+'"]').classList.add('active');
+      window.location.hash = tabId;
+    }
+    window.onload = function() {
+      let hash = window.location.hash.replace('#','');
+      let defaultTab = hash && document.getElementById(hash) ? hash : "about";
+      showTab(defaultTab);
+      document.querySelectorAll('nav a').forEach(link => {
+        link.onclick = function(e) {
+          e.preventDefault();
+          showTab(this.getAttribute('data-tab'));
+        };
+      });
+    }
+    window.onhashchange = function() {
+      let hash = window.location.hash.replace('#','');
+      if(document.getElementById(hash)) showTab(hash);
+    }
+  </script>
 </head>
 <body>
-    <h1>Introduction</h1>
-    <p>This is my first web page.</p>
+  <header>
+    <h1>Bailey Schroder</h1>
+    <p>Data Analyst &amp; Mathematician | Aspiring Data Scientist</p>
+    <nav>
+      <a href="#about" data-tab="about" class="active">About</a>
+      <a href="#skills" data-tab="skills">Skills</a>
+      <a href="#resume" data-tab="resume">Resume</a>
+      <a href="#experience" data-tab="experience">Experience</a>
+      <a href="#projects" data-tab="projects">Projects</a>
+    </nav>
+  </header>
+  <main>
+    <!-- About Tab -->
+    <div id="about" class="tab-content section about active">
+      <img class="profile-image" src="image1.jpg" alt="Bailey Schroder walking outdoors.">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm <b>Bailey Schroder</b>, a data analyst and mathematician with a passion for uncovering insights and solving impactful problems with data. My journey is rooted in analytical thinking, mathematical rigor, and a drive for continuous learning.
+      </p>
+      <p>
+        I am actively building my expertise to become a data scientist, combining strong technical skills with business acumen. I believe in the power of data storytelling to inform decisions, build innovative solutions, and create value across domains.
+      </p>
+      <!-- Contact & Links PROMINENT BOX placed below About Me -->
+      <div class="final-details-box">
+        <div class="final-label">Contact & Links</div>
+        <ul>
+          <li>
+            <i class="fa fa-map-marker-alt"></i>
+            <b>Location:</b> Gilbert, AZ
+          </li>
+          <li>
+            <i class="fa fa-envelope"></i>
+            <b>Email:</b>
+            <a class="final-detail-link" href="mailto:baileyschroder@email.com">baileyschroder@email.com</a>
+          </li>
+          <li>
+            <i class="fab fa-linkedin"></i>
+            <b>LinkedIn:</b>
+            <a class="final-detail-link" href="https://www.linkedin.com/in/bailey-schroder96/" target="_blank">bailey-schroder96</a>
+          </li>
+          <li>
+            <i class="fab fa-github"></i>
+            <b>GitHub:</b>
+            <a class="final-detail-link" href="https://github.com/baileycschroder" target="_blank">baileycschroder</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Skills Tab -->
+    <div id="skills" class="tab-content section">
+      <img class="skills-image" src="image2.jpg" alt="Bailey Schroder in a professional, academic, or analytical setting.">
+      <h2>Skills &amp; Tools</h2>
+      <div class="skills-visuals">
+        <div class="skills-list">
+          <ul>
+            <li><b>Programming &amp; Data Analysis:</b> Python, SQL, C++, Java, MATLAB</li>
+            <li><b>Data Visualization:</b> Tableau, Excel, Matplotlib, Seaborn</li>
+            <li><b>Business Intelligence:</b> Google Analytics, Reporting &amp; Dashboards</li>
+            <li><b>Database &amp; Data Management:</b> SQL, SharePoint, Data Cleaning</li>
+            <li><b>Version Control:</b> Git, GitHub</li>
+            <li><b>Other Tools:</b> Jupyter Notebook, Microsoft Office Suite, SOP Documentation</li>
+            <li><b>Soft Skills:</b> Communication, Problem-Solving, Leadership, Teamwork, Adaptability</li>
+          </ul>
+        </div>
+        <div class="skills-visual">
+          <h3>Technical Proficiency</h3>
+          <div class="skills-visual-bar">
+            <div class="skill-label">Python</div>
+            <div class="bar" style="width: 92%; background: linear-gradient(90deg, var(--accent) 92%, #e1ecf7 92%);"><span>Advanced</span></div>
+            <div class="skill-label">SQL</div>
+            <div class="bar" style="width: 83%; background: linear-gradient(90deg, var(--accent) 83%, #e1ecf7 83%);"><span>Proficient</span></div>
+            <div class="skill-label">Excel</div>
+            <div class="bar" style="width: 87%; background: linear-gradient(90deg, var(--accent) 87%, #e1ecf7 87%);"><span>Advanced</span></div>
+            <div class="skill-label">Tableau</div>
+            <div class="bar" style="width: 76%; background: linear-gradient(90deg, var(--accent) 76%, #e1ecf7 76%);"><span>Intermediate</span></div>
+            <div class="skill-label">C++ / Java</div>
+            <div class="bar" style="width: 68%; background: linear-gradient(90deg, var(--accent) 68%, #e1ecf7 68%);"><span>Intermediate</span></div>
+            <div class="skill-label">MATLAB</div>
+            <div class="bar" style="width: 70%; background: linear-gradient(90deg, var(--accent) 70%, #e1ecf7 70%);"><span>Intermediate</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Resume Tab -->
+    <div id="resume" class="tab-content section">
+      <img class="resume-image" src="image3.jpg" alt="Bailey Schroder at a professional event or milestone.">
+      <h2>Resume</h2>
+      <a class="resume-link" href="resume.pdf.pdf" target="_blank">Download My Resume (PDF)</a>
+      <p>For a detailed overview of my professional background, academic history, and project work, please download my latest resume.</p>
+    </div>
+    <!-- Experience Tab -->
+    <div id="experience" class="tab-content section experience-list">
+      <img class="experience-image" src="image2.jpg" alt="Bailey Schroder in a professional or academic context.">
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+        <div class="timeline-entry">
+          <span class="experience-role">Supply Chain Specialist</span>,
+          <span class="experience-company">Amazon, Tempe, AZ</span>
+          <span class="experience-dates">2023–Current</span>
+          <ul>
+            <li>Optimized supply chain processes and ensured efficient inventory management by collaborating with cross-functional teams.</li>
+            <li>Utilized data analysis and reporting tools to track key performance metrics and conducted supplier audits to maintain the highest standards.</li>
+            <li>Managed procurement activities, vendor relations, order processing, and inventory control to minimize stockouts and overstock situations.</li>
+            <li>Negotiated favorable pricing and developed detailed documentation of supply chain processes and standard operating procedures (SOPs).</li>
+          </ul>
+        </div>
+        <div class="timeline-entry">
+          <span class="experience-role">Digital/Data Analyst Intern</span>,
+          <span class="experience-company">Wine to Water, La Jolla, CA</span>
+          <span class="experience-dates">2022–2023</span>
+          <ul>
+            <li>Analyzed digital marketing campaigns and customer behavior to identify trends and optimization opportunities.</li>
+            <li>Created reports and dashboards using Google Analytics, Excel, and visualization tools to present key performance indicators.</li>
+            <li>Cleaned, organized, and validated large datasets to ensure data accuracy and integrity.</li>
+          </ul>
+        </div>
+        <div class="timeline-entry">
+          <span class="experience-role">Customer Service/Retail Specialist</span>,
+          <span class="experience-company">FB Society, Scottsdale, AZ</span>
+          <span class="experience-dates">2015–2022</span>
+          <ul>
+            <li>Delivered exceptional customer service and resolved issues to ensure a positive shopping experience for customers.</li>
+            <li>Trained new employees in best practices and product knowledge to ensure a consistent customer experience.</li>
+            <li>Adapted to fast-paced, high-pressure situations and effectively resolved customer complaints to maintain loyalty.</li>
+          </ul>
+        </div>
+        <div class="timeline-entry">
+          <span class="experience-role">Independent Business Owner</span>,
+          <span class="experience-company">Salon Amore, Gilbert, AZ</span>
+          <span class="experience-dates">2015–2017</span>
+          <ul>
+            <li>Launched and operated a Cosmetology business, managing all aspects of business development and customer service.</li>
+            <li>Demonstrated entrepreneurial and business acumen, including budgeting, forecasting, and profit/loss analysis.</li>
+            <li>Continually sought opportunities for business improvement and innovation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Projects Tab -->
+    <div id="projects" class="tab-content section">
+      <img class="projects-image" src="image3.jpg" alt="Bailey Schroder at a celebratory or professional milestone.">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <strong>Portfolio Website</strong> &mdash;
+        <a href="https://github.com/baileycschroder/my-portfolio" target="_blank">View Source on GitHub</a> | 
+        <a href="https://baileycschroder.github.io/my-portfolio/" target="_blank">Visit Live Site</a>
+        <div><em>This personal portfolio website showcases my skills, experience, and projects. Built with HTML, CSS, and a focus on user-friendly responsive design.</em></div>
+      </div>
+      <div class="project-card">
+        <strong>hello-world.py</strong> &mdash;
+        <a href="https://github.com/baileycschroder/datascience/blob/main/hello-world.py" target="_blank">View on GitHub</a>
+        <div><em>Python starter script demonstrating basic print statements and version control with Git.</em></div>
+        <pre><code>print("Hello, world!")</code></pre>
+      </div>
+      <div class="project-card">
+        <strong>Untitled-1.ipynb</strong> &mdash;
+        <a href="https://github.com/baileycschroder/datascience/blob/main/Untitled-1.ipynb" target="_blank">View Notebook</a>
+        <div><em>Jupyter notebook for data analysis and exploration.</em></div>
+      </div>
+      <div class="project-card">
+        <strong>Python4.docx</strong> &mdash;
+        <a href="https://github.com/baileycschroder/datascience/blob/main/Python4.docx" target="_blank">Download Document</a>
+        <div><em>Documentation and notes on Python data science techniques.</em></div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
