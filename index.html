@@ -354,6 +354,8 @@
       links.forEach(link => link.classList.remove('active'));
       document.querySelector('nav a[data-tab="'+tabId+'"]').classList.add('active');
       window.location.hash = tabId;
+      // Always scroll to top after tab switch
+      window.scrollTo(0, 0);
     }
     window.onload = function() {
       let hash = window.location.hash.replace('#','');
@@ -390,10 +392,10 @@
       <img class="profile-image" src="image3.jpg" alt="Bailey Schroder at a professional event or milestone.">
       <h2>About Me</h2>
       <p>
-        Hello! I'm <b>Bailey Schroder</b>, a data analyst and mathematician with a passion for uncovering insights and solving impactful problems with data. My journey is rooted in analytical thinking[...]
+        Hello! I'm <b>Bailey Schroder</b>, a data analyst and mathematician with a passion for uncovering insights and solving impactful problems with data. My journey is rooted in analytical thinking and mathematical rigor, and a drive for continuous learning.
       </p>
       <p>
-        I am actively building my expertise to become a data scientist, combining strong technical skills with business acumen. I believe in the power of data storytelling to inform decisions, build i[...]
+        I am actively building my expertise to become a data scientist, combining strong technical skills with business acumen. I believe in the power of data storytelling to inform decisions, build innovative solutions, and create value across domains.
       </p>
       <!-- Contact & Links PROMINENT BOX placed below About Me -->
       <div class="final-details-box">
