@@ -1,0 +1,2 @@
+# This directory is intended to hold the CSV data files used in the analysis. 
+# You should place your datasets (e.g., megaline_calls.csv, megaline_internet.csv, megaline_messages.csv, megaline_plans.csv, megaline_users.csv) in this folder.
