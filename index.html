@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portfolio of Bailey Schroder, Data Analyst, Mathematician, and Aspiring Data Scientist.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Mono:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     :root {
@@ -23,7 +23,9 @@
       --highlight: #ffba34;
       --finalline: #23c2ff;
       --finalbg: #f4fbff;
+      --nav-height: 3.2em;
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Roboto', Arial, sans-serif;
       margin: 0; padding: 0;
@@ -35,16 +37,18 @@
     }
     header {
       background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
-      padding: 2em 0 1em 0;
+      padding: 2em 0 1.2em 0;
       box-shadow: var(--shadow);
       position: sticky;
       top: 0; z-index: 100;
+      border-bottom: 3px solid var(--accent);
     }
     header h1 {
+      font-family: 'Montserrat', 'Roboto', sans-serif;
       color: #fff;
       text-align: center;
-      margin: 0 0 0.3em 0;
-      font-size: 2.4em;
+      margin: 0 0 0.2em 0;
+      font-size: 2.5em;
       letter-spacing: 0.03em;
       font-weight: 700;
       text-shadow: 0 2px 8px #183c57c7;
@@ -60,9 +64,16 @@
       text-align: center;
       margin-top: 0.5em;
       margin-bottom: 0.2em;
+      min-height: var(--nav-height);
+      display: flex;
+      justify-content: center;
+      gap: 0.2em;
+      flex-wrap: wrap;
     }
     nav a {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55em;
       color: var(--primary);
       background: #e6f4ff;
       padding: 0.65em 1.5em;
@@ -74,13 +85,15 @@
       border-bottom: none;
       font-size: 1.07em;
       letter-spacing: 0.01em;
-      transition: background 0.2s, color 0.13s, border 0.15s;
+      transition: background 0.2s, color 0.13s, border 0.15s, box-shadow 0.13s;
       position: relative;
       top: 4px;
       min-width: 110px;
       box-shadow: 0 1px 2px #fff8;
+      cursor: pointer;
+      outline: none;
     }
-    nav a.active, nav a:hover {
+    nav a.active, nav a:hover, nav a:focus {
       background: var(--tab-active);
       color: var(--primary);
       border-color: var(--accent) var(--accent) var(--tab-active) var(--accent);
@@ -89,8 +102,8 @@
       box-shadow: 0 2px 8px #d5edfa;
     }
     main {
-      max-width: 1000px;
-      margin: 2.6em auto 0 auto;
+      max-width: 1050px;
+      margin: 2.4em auto 0 auto;
       padding: 0 1.5em 2em 1.5em;
     }
     .tab-content {
@@ -105,10 +118,11 @@
     .section {
       background: var(--section-bg);
       padding: 2.1em 2em 2em 2em;
-      border-radius: 16px;
-      margin-bottom: 2.9em;
+      border-radius: 18px;
+      margin-bottom: 2.7em;
       box-shadow: var(--shadow);
       border: 2.3px solid var(--outline);
+      position: relative;
     }
     .about { border: 2.3px solid var(--accent); background: #f8fcfe; }
     .about h2 { margin-top: 0; }
@@ -126,6 +140,15 @@
       display: block;
       margin: 0 auto 1.5em auto;
       background: #f0f8fa;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s;
+    }
+    .profile-image:hover,
+    .skills-image:hover,
+    .resume-image:hover,
+    .experience-image:hover,
+    .projects-image:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 8px 32px #23c2ff33;
     }
     .final-details-box {
       background: var(--finalbg);
@@ -137,6 +160,11 @@
       box-shadow: 0 2px 30px #23c2ff29;
       text-align: center;
       position: relative;
+      animation: popIn 1.2s cubic-bezier(0.2,1.1,0.6,1.1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
     }
     .final-details-box:before, .final-details-box:after {
       content: "";
@@ -165,12 +193,12 @@
     .final-detail-link {
       display: block;
       font-size: 1.08em;
-      margin: 0.46em auto 0.46em auto;
+      margin: 0.34em auto 0.34em auto;
       color: var(--primary);
       background: linear-gradient(90deg, #eafdff 60%, #e8f6fc 100%);
       border: 2px solid var(--accent);
       border-radius: 8px;
-      padding: 0.5em 1.5em;
+      padding: 0.5em 1.3em;
       font-weight: bold;
       text-decoration: none;
       transition: background 0.18s, color 0.15s, border 0.14s;
@@ -182,6 +210,7 @@
       color: #fff;
       border-color: var(--primary);
       box-shadow: 0 2px 16px #23c2ff44;
+      text-decoration: underline;
     }
     .final-details-box ul {
       list-style: none;
@@ -202,11 +231,6 @@
     .final-details-box .fa {
       margin-right: 0.5em;
       color: var(--accent);
-    }
-    /* Responsive styling */
-    @media (max-width: 550px) {
-      .final-details-box { padding: 1em 0.4em; }
-      .final-details-box:before, .final-details-box:after { width: 93%; }
     }
     .skills-visuals {
       display: flex;
@@ -238,6 +262,12 @@
       position: relative;
       overflow: hidden;
       border: 1.2px solid var(--outline);
+      box-shadow: 0 2px 6px #23c2ff11;
+      animation: fillBar 1.6s cubic-bezier(0.45,0.85,0.5,1.4);
+    }
+    @keyframes fillBar {
+      from { width: 0; }
+      to   { width: inherit; }
     }
     .bar span {
       position: absolute;
@@ -291,28 +321,6 @@
       margin-top: 0.2em;
       margin-bottom: 1.2em;
     }
-    .project-card {
-      background: #f6fbff;
-      border: 1.5px solid var(--outline);
-      border-radius: 9px;
-      box-shadow: 0 1px 4px #23c2ff14;
-      padding: 1em 1.2em 0.9em 1.2em;
-      margin-bottom: 1.1em;
-      transition: box-shadow 0.18s;
-    }
-    .project-card:hover {
-      box-shadow: 0 4px 18px #23c2ff36;
-      border-color: var(--accent);
-    }
-    .project-card strong { color: var(--primary); }
-    .project-card em { color: #377578; font-size: 0.97em; }
-    pre, code {
-      background: var(--code-bg);
-      font-family: var(--mono);
-      font-size: 0.97em;
-      border-radius: 6px;
-      padding: 0.18em 0.4em;
-    }
     .timeline {
       border-left: 3px solid var(--accent);
       padding-left: 1.5em;
@@ -321,6 +329,7 @@
     .timeline-entry {
       margin-bottom: 2.1em;
       position: relative;
+      animation: fadeIn 0.6s cubic-bezier(0.4,0,0.2,1);
     }
     .timeline-entry:before {
       content: "";
@@ -333,16 +342,71 @@
       top: 0.35em;
       box-shadow: 0 1px 8px #23c2ff33;
     }
+    .project-card {
+      background: #f6fbff;
+      border: 1.5px solid var(--outline);
+      border-radius: 12px;
+      box-shadow: 0 1px 8px #23c2ff15;
+      padding: 1em 1.2em 0.9em 1.2em;
+      margin-bottom: 1.1em;
+      transition: box-shadow 0.18s, transform 0.13s;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 28px #23c2ff40;
+      border-color: var(--accent);
+      transform: translateY(-2px) scale(1.017);
+    }
+    .project-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.89em;
+      padding: 0.18em 0.7em;
+      margin-right: 0.7em;
+      margin-bottom: 0.3em;
+      font-family: var(--mono);
+      letter-spacing: 0.01em;
+      box-shadow: 0 1px 6px #23c2ff44;
+    }
+    .project-card strong { color: var(--primary); }
+    .project-card em { color: #377578; font-size: 0.97em; }
+    pre, code {
+      background: var(--code-bg);
+      font-family: var(--mono);
+      font-size: 0.97em;
+      border-radius: 6px;
+      padding: 0.18em 0.4em;
+    }
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+      color: #eaf6ff;
+      text-align: center;
+      padding: 1.1em 0 0.6em 0;
+      font-size: 0.98em;
+      letter-spacing: 0.02em;
+      margin-top: 1.9em;
+      border-top: 2.5px solid var(--accent);
+    }
+    /* Responsive styling */
     @media (max-width: 850px) {
       main { padding: 0 0.4em 2em 0.4em; }
-      .section { padding: 1.15em 0.4em 1.1em 0.7em;}
+      .section { padding: 1.15em 0.3em 1.1em 0.7em;}
       .skills-visuals { flex-direction: column; gap: 1.2em;}
       .skills-visual { max-width: none; }
+    }
+    @media (max-width: 550px) {
+      .final-details-box { padding: 1em 0.4em; }
+      .final-details-box:before, .final-details-box:after { width: 93%; }
+      .profile-image, .skills-image, .resume-image, .projects-image, .experience-image { width: 82px; height: 82px;}
     }
     @media (max-width: 500px) {
       nav a { font-size: 0.93em; padding: 0.55em 0.7em;}
       .section { padding: 0.9em 0.2em 0.6em 0.4em;}
-      .profile-image, .skills-image, .resume-image, .projects-image, .experience-image { width: 82px; height: 82px;}
     }
   </style>
   <script>
@@ -354,7 +418,6 @@
       links.forEach(link => link.classList.remove('active'));
       document.querySelector('nav a[data-tab="'+tabId+'"]').classList.add('active');
       window.location.hash = tabId;
-      // Always scroll to top after tab switch
       window.scrollTo(0, 0);
     }
     window.onload = function() {
@@ -378,27 +441,27 @@
   <header>
     <h1>Bailey Schroder</h1>
     <p>Data Analyst &amp; Mathematician | Aspiring Data Scientist</p>
-    <nav>
-      <a href="#about" data-tab="about" class="active">About</a>
-      <a href="#skills" data-tab="skills">Skills</a>
-      <a href="#resume" data-tab="resume">Resume</a>
-      <a href="#experience" data-tab="experience">Experience</a>
-      <a href="#projects" data-tab="projects">Projects</a>
+    <nav aria-label="Main Navigation">
+      <a href="#about" data-tab="about" class="active"><i class="fa fa-user"></i>About</a>
+      <a href="#skills" data-tab="skills"><i class="fa fa-laptop-code"></i>Skills</a>
+      <a href="#resume" data-tab="resume"><i class="fa fa-file-alt"></i>Resume</a>
+      <a href="#experience" data-tab="experience"><i class="fa fa-briefcase"></i>Experience</a>
+      <a href="#projects" data-tab="projects"><i class="fa fa-folder-open"></i>Projects</a>
     </nav>
   </header>
   <main>
     <!-- About Tab -->
-    <div id="about" class="tab-content section about active">
+    <section id="about" class="tab-content section about active" aria-label="About Bailey Schroder">
       <img class="profile-image" src="image3.jpg" alt="Bailey Schroder at a professional event or milestone.">
       <h2>About Me</h2>
       <p>
-        Hello! I'm <b>Bailey Schroder</b>, a data analyst and mathematician with a passion for uncovering insights and solving impactful problems with data. My journey is rooted in analytical thinking and mathematical rigor, and a drive for continuous learning.
+        Hi! I'm <strong>Bailey Schroder</strong>, a data analyst and mathematician passionate about transforming raw data into actionable business insights. I thrive on solving real-world problems and believe that data storytelling is as important as the analytics itself.
       </p>
       <p>
-        I am actively building my expertise to become a data scientist, combining strong technical skills with business acumen. I believe in the power of data storytelling to inform decisions, build innovative solutions, and create value across domains.
+        My background combines analytical rigor, creativity, and strong communication, and I'm actively developing my skills to become a well-rounded data scientist. Whether it’s building dashboards, wrangling messy datasets, or collaborating with teams, I carry a growth mindset and a curiosity for all things data.
       </p>
       <!-- Contact & Links PROMINENT BOX placed below About Me -->
-      <div class="final-details-box">
+      <div class="final-details-box" aria-label="Contact & Links">
         <div class="final-label">Contact & Links</div>
         <ul>
           <li>
@@ -413,18 +476,18 @@
           <li>
             <i class="fab fa-linkedin"></i>
             <b>LinkedIn:</b>
-            <a class="final-detail-link" href="https://www.linkedin.com/in/bailey-schroder96/" target="_blank">bailey-schroder96</a>
+            <a class="final-detail-link" href="https://www.linkedin.com/in/bailey-schroder96/" target="_blank" rel="noopener">bailey-schroder96</a>
           </li>
           <li>
             <i class="fab fa-github"></i>
             <b>GitHub:</b>
-            <a class="final-detail-link" href="https://github.com/baileycschroder" target="_blank">baileycschroder</a>
+            <a class="final-detail-link" href="https://github.com/baileycschroder" target="_blank" rel="noopener">baileycschroder</a>
           </li>
         </ul>
       </div>
-    </div>
+    </section>
     <!-- Skills Tab -->
-    <div id="skills" class="tab-content section">
+    <section id="skills" class="tab-content section" aria-label="Skills">
       <img class="skills-image" src="image1.jpg" alt="Bailey Schroder in a professional, academic, or analytical setting.">
       <h2>Skills &amp; Tools</h2>
       <div class="skills-visuals">
@@ -457,16 +520,16 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- Resume Tab -->
-    <div id="resume" class="tab-content section">
+    <section id="resume" class="tab-content section" aria-label="Resume">
       <img class="resume-image" src="image2.jpg" alt="Bailey Schroder at a professional event or milestone.">
       <h2>Resume</h2>
-      <a class="resume-link" href="resume.pdf.pdf" target="_blank">Download My Resume (PDF)</a>
+      <a class="resume-link" href="resume.pdf.pdf" target="_blank" rel="noopener"><i class="fa fa-download"></i> Download My Resume (PDF)</a>
       <p>For a detailed overview of my professional background, academic history, and project work, please download my latest resume.</p>
-    </div>
+    </section>
     <!-- Experience Tab -->
-    <div id="experience" class="tab-content section experience-list">
+    <section id="experience" class="tab-content section experience-list" aria-label="Professional Experience">
       <img class="experience-image" src="image2.jpg" alt="Bailey Schroder in a professional or academic context.">
       <h2>Professional Experience</h2>
       <div class="timeline">
@@ -512,57 +575,72 @@
           </ul>
         </div>
       </div>
-    </div>
+    </section>
     <!-- Projects Tab -->
-    <div id="projects" class="tab-content section">
+    <section id="projects" class="tab-content section" aria-label="Projects">
       <img class="projects-image" src="image3.jpg" alt="Bailey Schroder at a celebratory or professional milestone.">
       <h2>Projects</h2>
       <div class="project-card">
+        <span class="project-badge">Web</span>
         <strong>Portfolio Website</strong> &mdash;
-        <a href="https://github.com/baileycschroder/my-portfolio" target="_blank">View Source on GitHub</a> | 
-        <a href="https://baileycschroder.github.io/my-portfolio/" target="_blank">Visit Live Site</a>
+        <a href="https://github.com/baileycschroder/my-portfolio" target="_blank" rel="noopener"><i class="fab fa-github"></i> Source</a> |
+        <a href="https://baileycschroder.github.io/my-portfolio/" target="_blank" rel="noopener"><i class="fa fa-globe"></i> Live Site</a>
         <div><em>This personal portfolio website showcases my skills, experience, and projects. Built with HTML, CSS, and a focus on user-friendly responsive design.</em></div>
       </div>
       <div class="project-card">
+        <span class="project-badge">Python</span>
         <strong>hello-world.py</strong> &mdash;
-        <a href="https://github.com/baileycschroder/datascience/blob/main/hello-world.py" target="_blank">View on GitHub</a>
+        <a href="https://github.com/baileycschroder/datascience/blob/main/hello-world.py" target="_blank" rel="noopener"><i class="fab fa-github"></i> View</a>
         <div><em>Python starter script demonstrating basic print statements and version control with Git.</em></div>
         <pre><code>print("Hello, world!")</code></pre>
       </div>
       <div class="project-card">
+        <span class="project-badge">Jupyter</span>
         <strong>Untitled-1.ipynb</strong> &mdash;
-        <a href="https://github.com/baileycschroder/datascience/blob/main/Untitled-1.ipynb" target="_blank">View Notebook</a>
+        <a href="https://github.com/baileycschroder/datascience/blob/main/Untitled-1.ipynb" target="_blank" rel="noopener"><i class="fab fa-github"></i> Notebook</a>
         <div><em>Jupyter notebook for data analysis and exploration.</em></div>
       </div>
       <div class="project-card">
+        <span class="project-badge">Docs</span>
         <strong>Python4.docx</strong> &mdash;
-        <a href="https://github.com/baileycschroder/datascience/blob/main/Python4.docx" target="_blank">Download Document</a>
+        <a href="https://github.com/baileycschroder/datascience/blob/main/Python4.docx" target="_blank" rel="noopener"><i class="fab fa-github"></i> Download</a>
         <div><em>Documentation and notes on Python data science techniques.</em></div>
       </div>
-
-      <!-- New Project: Instacart Market Basket Analysis -->
       <div class="project-card">
+        <span class="project-badge">Data Science</span>
         <strong>Instacart Market Basket Analysis</strong> &mdash;
-        <a href="https://github.com/baileycschroder/my-portfolio/tree/main/instacart-market-basket-analysis/notebooks" target="_blank">View Notebooks</a>
+        <a href="https://github.com/baileycschroder/my-portfolio/tree/main/instacart-market-basket-analysis/notebooks" target="_blank" rel="noopener"><i class="fab fa-github"></i> Notebooks</a>
         <div>
           <em>
-            An in-depth data science project exploring customer purchasing patterns using Instacart data. Applied market basket analysis and association rule mining to uncover product affinities and actionable insights for e-commerce optimization.
+            An in-depth data science project exploring customer purchasing patterns using Instacart data. Applied market basket analysis and association rule mining to uncover product affinities and actionable insights.
           </em>
         </div>
       </div>
-
-      <!-- New Project: Megaline Revenue Analysis -->
       <div class="project-card">
+        <span class="project-badge">Analytics</span>
         <strong>Megaline Revenue Analysis</strong> &mdash;
-        <a href="https://github.com/baileycschroder/my-portfolio/tree/main/megaline-revenue-analysis/notebooks" target="_blank">View Notebooks</a>
+        <a href="https://github.com/baileycschroder/my-portfolio/tree/main/megaline-revenue-analysis/notebooks" target="_blank" rel="noopener"><i class="fab fa-github"></i> Notebooks</a>
         <div>
           <em>
-            A comprehensive analysis of telecom revenue streams aimed at identifying key drivers of profit and customer churn. Utilized statistical and machine learning techniques to provide recommendations for boosting Megaline’s business performance.
+            A comprehensive analysis of telecom revenue streams aimed at identifying key drivers of profit and customer churn. Utilized statistical and machine learning techniques to provide recommendations.
           </em>
         </div>
       </div>
-
-    </div>
+      <div class="project-card">
+        <span class="project-badge">Forecasting</span>
+        <strong>Video Game Sales Forecasting</strong> &mdash;
+        <a href="https://yourusername.github.io/Video-gamesales_forecasting/" target="_blank" rel="noopener"><i class="fa fa-globe"></i> Live Project</a>
+        <div>
+          <em>
+            Forecasting video game sales using data science models to identify trends and predict future market performance.
+          </em>
+        </div>
+      </div>
+    </section>
   </main>
+  <footer>
+    &copy; 2025 Bailey Schroder &mdash; Data Analyst &amp; Aspiring Data Scientist. <br>
+    Built with <i class="fa fa-heart" style="color:#ffba34"></i> and data.
+  </footer>
 </body>
 </html>
