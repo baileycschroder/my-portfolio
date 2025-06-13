@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Mono:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    /* (Use your current CSS as is) */
     :root {
       --primary: #143059;
       --accent: #23c2ff;
@@ -36,7 +35,379 @@
       letter-spacing: 0.01em;
       line-height: 1.65;
     }
-    /* ... rest of your CSS unchanged ... */
+    header {
+      background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+      padding: 2em 0 1.2em 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0; z-index: 100;
+      border-bottom: 3px solid var(--accent);
+    }
+    header h1 {
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      color: #fff;
+      text-align: center;
+      margin: 0 0 0.2em 0;
+      font-size: 2.5em;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #183c57c7;
+    }
+    header p {
+      color: #eaf2fa;
+      text-align: center;
+      font-size: 1.15em;
+      margin: 0 0 1.1em 0;
+      font-weight: 400;
+    }
+    nav {
+      text-align: center;
+      margin-top: 0.5em;
+      margin-bottom: 0.2em;
+      min-height: var(--nav-height);
+      display: flex;
+      justify-content: center;
+      gap: 0.2em;
+      flex-wrap: wrap;
+    }
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55em;
+      color: var(--primary);
+      background: #e6f4ff;
+      padding: 0.65em 1.5em;
+      margin: 0 0.02em;
+      text-decoration: none;
+      border-radius: 12px 12px 0 0;
+      font-weight: 500;
+      border: 2px solid var(--outline);
+      border-bottom: none;
+      font-size: 1.07em;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, color 0.13s, border 0.15s, box-shadow 0.13s;
+      position: relative;
+      top: 4px;
+      min-width: 110px;
+      box-shadow: 0 1px 2px #fff8;
+      cursor: pointer;
+      outline: none;
+    }
+    nav a.active, nav a:hover, nav a:focus {
+      background: var(--tab-active);
+      color: var(--primary);
+      border-color: var(--accent) var(--accent) var(--tab-active) var(--accent);
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: 0 2px 8px #d5edfa;
+    }
+    main {
+      max-width: 1050px;
+      margin: 2.4em auto 0 auto;
+      padding: 0 1.5em 2em 1.5em;
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px);}
+      to { opacity: 1; transform: none;}
+    }
+    .section {
+      background: var(--section-bg);
+      padding: 2.1em 2em 2em 2em;
+      border-radius: 18px;
+      margin-bottom: 2.7em;
+      box-shadow: var(--shadow);
+      border: 2.3px solid var(--outline);
+      position: relative;
+    }
+    .about { border: 2.3px solid var(--accent); background: #f8fcfe; }
+    .about h2 { margin-top: 0; }
+    .profile-image,
+    .skills-image,
+    .resume-image,
+    .experience-image,
+    .projects-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 3px solid var(--accent);
+      box-shadow: 0 2px 18px #23c2ff22;
+      display: block;
+      margin: 0 auto 1.5em auto;
+      background: #f0f8fa;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s;
+    }
+    .profile-image:hover,
+    .skills-image:hover,
+    .resume-image:hover,
+    .experience-image:hover,
+    .projects-image:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 8px 32px #23c2ff33;
+    }
+    .final-details-box {
+      background: var(--finalbg);
+      border: 3px solid var(--finalline);
+      border-radius: 18px;
+      padding: 1.1em 1.7em 1.1em 1.7em;
+      margin: 2.3em auto 1.7em auto;
+      max-width: 440px;
+      box-shadow: 0 2px 30px #23c2ff29;
+      text-align: center;
+      position: relative;
+      animation: popIn 1.2s cubic-bezier(0.2,1.1,0.6,1.1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .final-details-box:before, .final-details-box:after {
+      content: "";
+      display: block;
+      width: 70%;
+      height: 4px;
+      margin: 0 auto 18px auto;
+      background: linear-gradient(90deg, var(--accent), var(--highlight), var(--accent));
+      border-radius: 7px;
+      opacity: 0.85;
+    }
+    .final-details-box:before { margin-bottom: 24px; margin-top: -18px;}
+    .final-details-box:after { margin-top: 24px; margin-bottom: -18px;}
+    .final-label {
+      display: inline-block;
+      background: var(--highlight);
+      color: #143059;
+      padding: 0.21em 1.2em;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.13em;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.02em;
+      box-shadow: 0 1px 6px #ffba3433;
+    }
+    .final-detail-link {
+      display: block;
+      font-size: 1.08em;
+      margin: 0.34em auto 0.34em auto;
+      color: var(--primary);
+      background: linear-gradient(90deg, #eafdff 60%, #e8f6fc 100%);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.5em 1.3em;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.18s, color 0.15s, border 0.14s;
+      box-shadow: 0 1px 7px #1cb1e620;
+      word-break: break-all;
+    }
+    .final-detail-link:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 16px #23c2ff44;
+      text-decoration: underline;
+    }
+    .final-details-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.7em 0 0 0;
+      text-align: left;
+    }
+    .final-details-box li {
+      margin: 0.55em 0;
+      font-size: 1.09em;
+      padding-left: 0.3em;
+    }
+    .final-details-box li b {
+      color: var(--primary);
+      font-weight: 600;
+      margin-right: 0.4em;
+    }
+    .final-details-box .fa {
+      margin-right: 0.5em;
+      color: var(--accent);
+    }
+    .skills-visuals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      align-items: flex-start;
+    }
+    .skills-list { flex: 2; min-width: 260px; }
+    .skills-visual { flex: 1; min-width: 250px; max-width: 330px; }
+    .skills-visual-bar {
+      background: #f6fbff;
+      border-radius: 13px;
+      padding: 1.2em 1em 1em 1em;
+      margin-top: 1.1em;
+      margin-bottom: 1em;
+      border: 1.4px solid var(--outline);
+    }
+    .skill-label {
+      margin-bottom: 0.3em;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.07em;
+    }
+    .bar {
+      height: 17px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--accent) 80%, #e1ecf7 80%);
+      margin-bottom: 0.7em;
+      position: relative;
+      overflow: hidden;
+      border: 1.2px solid var(--outline);
+      box-shadow: 0 2px 6px #23c2ff11;
+      animation: fillBar 1.6s cubic-bezier(0.45,0.85,0.5,1.4);
+    }
+    @keyframes fillBar {
+      from { width: 0; }
+      to   { width: inherit; }
+    }
+    .bar span {
+      position: absolute;
+      left: 12px;
+      color: #174464;
+      font-size: 0.95em;
+      top: 0;
+      line-height: 17px;
+      z-index: 2;
+      text-shadow: 0 1px 2px #fff8;
+      font-weight: 500;
+      font-family: var(--mono);
+    }
+    .resume-link {
+      font-size: 1.14em;
+      font-weight: 600;
+      color: var(--primary);
+      display: inline-block;
+      margin: 1.2em 0;
+      border: 2px solid var(--accent);
+      border-radius: 9px;
+      padding: 0.48em 1.17em;
+      background: linear-gradient(90deg,#eafdff 60%,#e8f6fc 100%);
+      text-decoration: none;
+      box-shadow: 0 1px 7px #1cb1e620;
+      transition: background 0.17s, color 0.13s, border 0.13s, box-shadow 0.2s;
+    }
+    .resume-link:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 16px #23c2ff44;
+    }
+    .experience-role {
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 1.08em;
+    }
+    .experience-company {
+      font-style: italic;
+      color: #197993;
+    }
+    .experience-dates {
+      color: #556;
+      font-size: 0.99em;
+      margin-left: 1em;
+      font-family: var(--mono);
+    }
+    .experience-list ul {
+      padding-left: 1.2em;
+      margin-top: 0.2em;
+      margin-bottom: 1.2em;
+    }
+    .timeline {
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5em;
+      margin-left: 0.3em;
+    }
+    .timeline-entry {
+      margin-bottom: 2.1em;
+      position: relative;
+      animation: fadeIn 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .timeline-entry:before {
+      content: "";
+      width: 16px; height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      position: absolute;
+      left: -2.1em;
+      top: 0.35em;
+      box-shadow: 0 1px 8px #23c2ff33;
+    }
+    .project-card {
+      background: #f6fbff;
+      border: 1.5px solid var(--outline);
+      border-radius: 12px;
+      box-shadow: 0 1px 8px #23c2ff15;
+      padding: 1em 1.2em 0.9em 1.2em;
+      margin-bottom: 1.1em;
+      transition: box-shadow 0.18s, transform 0.13s;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 28px #23c2ff40;
+      border-color: var(--accent);
+      transform: translateY(-2px) scale(1.017);
+    }
+    .project-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.89em;
+      padding: 0.18em 0.7em;
+      margin-right: 0.7em;
+      margin-bottom: 0.3em;
+      font-family: var(--mono);
+      letter-spacing: 0.01em;
+      box-shadow: 0 1px 6px #23c2ff44;
+    }
+    .project-card strong { color: var(--primary); }
+    .project-card em { color: #377578; font-size: 0.97em; }
+    pre, code {
+      background: var(--code-bg);
+      font-family: var(--mono);
+      font-size: 0.97em;
+      border-radius: 6px;
+      padding: 0.18em 0.4em;
+    }
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+      color: #eaf6ff;
+      text-align: center;
+      padding: 1.1em 0 0.6em 0;
+      font-size: 0.98em;
+      letter-spacing: 0.02em;
+      margin-top: 1.9em;
+      border-top: 2.5px solid var(--accent);
+    }
+    /* Responsive styling */
+    @media (max-width: 850px) {
+      main { padding: 0 0.4em 2em 0.4em; }
+      .section { padding: 1.15em 0.3em 1.1em 0.7em;}
+      .skills-visuals { flex-direction: column; gap: 1.2em;}
+      .skills-visual { max-width: none; }
+    }
+    @media (max-width: 550px) {
+      .final-details-box { padding: 1em 0.4em; }
+      .final-details-box:before, .final-details-box:after { width: 93%; }
+      .profile-image, .skills-image, .resume-image, .projects-image, .experience-image { width: 82px; height: 82px;}
+    }
+    @media (max-width: 500px) {
+      nav a { font-size: 0.93em; padding: 0.55em 0.7em;}
+      .section { padding: 0.9em 0.2em 0.6em 0.4em;}
+    }
   </style>
   <script>
     function showTab(tabId) {
@@ -258,13 +629,15 @@
       <div class="project-card">
         <span class="project-badge">Forecasting</span>
         <strong>Video Game Sales Forecasting</strong> &mdash;
-        <a href="https://github.com/baileycschroder/Video-gamesales_forecasting" target="_blank" rel="noopener"><i class="fab fa-github"></i> Repository</a>
+        <a href="https://github.com/baileycschroder/my-portfolio/tree/main/Video-gamesales_forecasting" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> Project Folder
+        </a>
         <div>
           <em>
             Forecasting video game sales using data science models to identify trends and predict future market performance.
           </em>
         </div>
-        <img src="image1" alt="Screenshot of the Video Game Sales Forecasting project UI." style="width:100%;margin-top:1em;border-radius:8px;">
+        <img src="image1.jpg" alt="Screenshot of the Video Game Sales Forecasting project UI." style="width:100%;margin-top:1em;border-radius:8px;">
       </div>
     </section>
   </main>
